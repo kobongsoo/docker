@@ -1,6 +1,9 @@
-# apache Dockerfile
+# apache Dockerfile 내용
+
+# test.html 파일 생성
 echo test >> test.html
 
+# vi Dockerfile 생성(*아래내용 복사후 저장)
 # basic image
 FROM ubuntu:18.04
 # image creator
@@ -17,3 +20,46 @@ WORKDIR /var/www/html
 RUN ["/bin/bash", "-c", "echo hello >> test2.html"]
 EXPOSE 80
 CMD apachectl -DFOREGROUND
+
+#------------------------------------------------------------------------
+# jupyter Dockerfile 제작 과정
+docker run -it --name jupyter -p 8888:8888 ubuntu:20.04
+apt-get update
+apt-get install python3 python3-pip -y
+pip3 install jupyter
+mkdir /notebooks
+jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/notebooks &
+ctrl+P, Q
+
+방화벽 오픈하고 접속
+
+# vi Dockerfile 생성(*아래내용 복사후 저장)
+
+# basic image
+FROM ubuntu:20.04
+# image creator
+MAINTAINER bardroh
+# key=value
+LABEL "course"="KOSA SaaS"
+# run command inside container
+RUN apt-get update
+RUN apt-get install python3 python3-pip -y
+RUN pip3 install jupyter
+RUN mkdir /notebooks
+VOLUME /notebooks
+CMD jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/notebooks
+
+# Docker파일 빌드
+docker build -t myjupyter:1.0 -f Dockerfile .
+
+# hub.docker 에 커밋
+docker tag myjupyter:1.0 bardroh/myjupyter:1.0
+docker login
+docker push bardroh/myjupyter:1.0
+
+# 기존 이미지 삭제
+docker rmi myjupyter:1.0
+docker rmi bardroh/myjupyter:1.0
+
+# hub.docker에 이미지 다운로드 설치
+docker run -d -p 8888:8888 --name myjupyter -v /work:/notebooks bardroh/myjupyter:1.0
