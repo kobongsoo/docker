@@ -1,0 +1,603 @@
+    1  cd src
+    2  ls
+    3  cd exercise/
+    4  ls
+    5  cd ..
+    6  ls
+    7  cd ..
+    8  ls
+    9  clear
+   10  ls
+   11  cd
+   12  ls
+   13  cd .ssh/
+   14  ls
+   15  cd ..
+   16  ls
+   17  git clone git@github.com:weable72/kosa-saas-2023.git
+   18  ssh-keygen
+   19  cat ~/.ssh/id_rsa.pub 
+   20  clear
+   21  git clone git@github.com:weable72/kosa-saas-2023.git
+   22  ls
+   23  cd kosa-saas-2023/
+   24  ls
+   25  cd src
+   26  ls
+   27  cd l
+   28  cd 1st/
+   29  ls
+   30  cd k8s/
+   31  ls
+   32  cd ..
+   33  ls
+   34  cd exercise/
+   35  ls
+   36  clear
+   37  ls
+   38  cd basic/
+   39  ls
+   40  vi jupyter-deployment.yaml 
+   41  ls
+   42  cd kosa-saas-2023/
+   43  ls
+   44  cd src
+   45  ls
+   46  cd 1st/
+   47  ls
+   48  cd exercise/
+   49  ls
+   50  cd basic/
+   51  clear
+   52  ls
+   53  clear
+   54  ls
+   55  vi jupyter-deployment.yaml 
+   56  kubectl get pods
+   57  kubectl get deploy
+   58  kubectl delete deploy nginx-deploy
+   59  kubectl get pods
+   60  kubectl get svc
+   61  clear
+   62  ls
+   63  kubectl apply -f jupyter-deployment.yaml 
+   64  kubectl get deploy
+   65  kubectl get rs
+   66  kubectl get pods
+   67  kubectl describe pod jupyter-5487f874b6-w2j78
+   68  clear
+   69  kubectl get pods
+   70  kubectl logs jupyter-5487f874b6-w2j78
+   71  clear
+   72  vi jupyter-service.yaml 
+   73  kubectl apply -f jupyter-service.yaml 
+   74  kubectl get svc
+   75  kubectl describe svc jupyter
+   76  kubectl get pods -o wide
+   77  clear
+   78  kubectl logs jupyter-5487f874b6-w2j78
+   79  clear
+   80  ls
+   81  cp jupyter-* ~/work/kosa-saas-2023-4nd/src/bardroh/day03/
+   82  cd ~/work/kosa-saas-2023-4nd/src/bardroh/day03/
+   83  ls
+   84  git add *.yaml
+   85  git commit
+   86  git pull
+   87  \git config pull.rebase false
+   88  git pull
+   89  clear
+   90  git config pull.rebase false
+   91  git pull
+   92  cd ..
+   93  cd
+   94  ls
+   95  cd work/
+   96  ls
+   97  rm -rf kosa-saas-2023-4nd/
+   98  git clone git@github.com:weable72/kosa-saas-2023-4nd.git
+   99  cd kosa-saas-2023-4nd/
+  100  ls
+  101  cd src
+  102  ls
+  103  cd bardroh/
+  104  cd day03/
+  105  ls
+  106  cp ~/kosa-saas-2023/src/1st/exercise/basic/ju* .
+  107  ls
+  108  git add ju*
+  109  git commit
+  110  git push
+  111  cd 
+  112  ls
+  113  cd kosa-saas-2023/
+  114  clear
+  115  cd src
+  116  ls
+  117  cd l
+  118  cd 1st/
+  119  ls
+  120  cd exercise/
+  121  ls
+  122  cd basic/
+  123  ls
+  124  vi wordpress-deployment.yaml 
+  125  vi mysql-deployment.yaml 
+  126  kubectl apply -f mysql-deployment.yaml 
+  127  kubectl get pods
+  128  kubectl describe pod mysql-95c9dd9f8-9mv54
+  129  vi mysql-service.yaml 
+  130  kubectl apply -f mysql-service.yaml 
+  131  kubectl get svc
+  132  clear
+  133  ls
+  134  vi wordpress-deployment.yaml 
+  135  kubectl get svc
+  136  kubectl apply -f wordpress-deployment.yaml 
+  137  kubectl get pods
+  138  clear
+  139  vi wordpress-service.yaml 
+  140  kubectl apply -f wordpress-service.yaml 
+  141  kubectl get svc
+  142  clear
+  143  kubectl get svc
+  144  ls
+  145  cp wordpress-* ~/work/kosa-saas-2023-4nd/src/bardroh/day03/
+  146  cp mysql-* ~/work/kosa-saas-2023-4nd/src/bardroh/day03/
+  147  cd ~/work/kosa-saas-2023-4nd/src/bardroh/day03/
+  148  clear
+  149  ls
+  150  git add *.yaml
+  151  git commit
+  152  git pull
+  153  git config pull.rebase false
+  154  git pull
+  155  clear
+  156  git push
+  157  cd 
+  158  ls
+  159  cd kosa-saas-2023/
+  160  ls
+  161  cd src
+  162  ls
+  163  cd 1st/
+  164  ls
+  165  cd exercise/
+  166  ls
+  167  cd basic/
+  168  ls
+  169  vi postgres-deployment.yaml 
+  170  clear
+  171  ls
+  172  vi postgres-deployment.yaml 
+  173  kubectl apply -f postgres-deployment.yaml 
+  174  kubectl get pods
+  175  kubectl get pods -o wide
+  176  vi postgres-service.yaml 
+  177  kubectl apply -f postgres-service.yaml 
+  178  kubectl get svc
+  179  vi drupal-deployment.yaml 
+  180  kubectl appy -f drupal-deployment.yaml 
+  181  kubectl apply -f drupal-deployment.yaml 
+  182  clear
+  183  kubectl get pods
+  184  clear
+  185  kubectl get pods
+  186  clear
+  187  kubectl get pods
+  188  vi drupal-service.yaml 
+  189  kubectl apply -f drupal-service.yaml 
+  190  kubectl get svc
+  191  clear
+  192  kubectl get svc
+  193  clear
+  194  kubectl get svc
+  195  clear
+  196  kubectl get svc
+  197  clear
+  198  kubectl get svc
+  199  vi postgres-deployment.yaml 
+  200  clar
+  201  clear
+  202  ls
+  203  cp postgres-* ~/work/kosa-saas-2023-4nd/src/bardroh/day03/
+  204  cp drupal-* ~/work/kosa-saas-2023-4nd/src/bardroh/day03/
+  205  cd ~/work/kosa-saas-2023-4nd/src/bardroh/day03/
+  206  ls
+  207  git add *.yaml
+  208  git commit
+  209  git push
+  210  git pull
+  211  git push
+  212  gcloud container clusters get-credentials myk8s --zone asia-northeast3-a --project cryptic-pipe-398203
+  213  kubectl get nodes
+  214  cat /etc/*release*
+  215  ps aux
+  216  celar
+  217  clear
+  218  ls
+  219  cd .kube/
+  220  ls
+  221  vi config
+  222  kubectl get nodes -o wide
+  223  clear
+  224  kubectl get pods --all-namespaces
+  225  kubectl get pods
+  226  kubectl get nodes 
+  227  kubectl get service
+  228  kubectl run nginx-pod --image=nginx:1.11
+  229  kubetl get pods
+  230  kubectl get pods
+  231  kubectl create deployment nginx-deploy --image=nginx:1.11
+  232  kubectl get deploy
+  233  kubectl get rs
+  234  kubectl get pods
+  235  cler
+  236  clear
+  237  kubectl get pods -o wide
+  238  kubectl expose deployment nginx-deploy --name nginx-service --port 80 --type=loadbalancer
+  239  kubectl expose deployment nginx-deploy --name nginx-service --port 80 --type=LoadBalancer
+  240  kubectl get svc
+  241  kubectl describe svc nginx-service
+  242  kubectl get pods -o wide
+  243  clear
+  244  kubectl expose deployment nginx-deploy --name nginx-service --port 80 --type=LoadBalancer --dry-run=client -o yaml
+  245  kubectl expose deployment nginx-deploy --name nginx-service --port 80 --type=LoadBalancer --dry-run=client -o yaml > nginx-service.yml
+  246  vi nginx-service.yml 
+  247  kubectl create deployment nginx-deploy --image=nginx:1.11 --dry-run=client -o yaml
+  248  kubectl create deployment nginx-deploy --image=nginx:1.11 --dry-run=client -o yaml > nginx-deploy.yml
+  249  vi nginx-deploy.yml 
+  250  clear
+  251  ls *.yml
+  252  kubectl get deploy
+  253  kubectl delete deploy nginx-deploy
+  254  kubectl get deploy,rs,pods
+  255  kubectl delete pod nginx-pod
+  256  kubectl get deploy,rs,pods
+  257  kubectl get svc
+  258  kubectl delete svc nginx-service
+  259  kubectl get svc
+  260  ls
+  261  ls *.yml
+  262  vi nginx-deploy.yml 
+  263  kubectl get pods
+  264  kubectl apply -f nginx-deploy.yml 
+  265  clear
+  266  kubectl get deploy
+  267  kubectl get rs
+  268  kubectl get pods
+  269  kubectl delete pod nginx-deploy-78c6648b64-pfpqb
+  270  kubectl get pods
+  271  kubectl apply -f nginx-deploy.yml 
+  272  kubectl get pods
+  273  kubectl delete -f nginx-deploy.yml 
+  274  kubectl get deploy,rs,pods
+  275  helm
+  276  clear
+  277  kubectl get svc
+  278  ls *.yml
+  279  kubectl apply -f nginx-deploy.yml 
+  280  kubectl get deploy,rs,pods
+  281  kubectl apply -f nginx-service.yml 
+  282  kubectl get svc
+  283  clear
+  284  kubectl get svc
+  285  ls
+  286  cd kosa-saas-2023/
+  287  ls
+  288  cd src
+  289  ls
+  290  cd 1st/
+  291  ls
+  292  cd k8s/
+  293  ls
+  294  cd basic/
+  295  ls
+  296  vi hostname-svc-
+  297  clear
+  298  ls
+  299  vi deployment-nginx.yaml 
+  300  cd ..
+  301  ls
+  302  cd ..
+  303  ls
+  304  cd exercise/
+  305  ls
+  306  cd basic/
+  307  ls
+  308  vi wordpress-service.yaml 
+  309  vi wordpress-deployment.yaml 
+  310  cd ..
+  311  ls
+  312  cd ..
+  313  ls
+  314  cd ..
+  315  ls
+  316  cd 1st/
+  317  ls
+  318  cp -dpR exercise ~
+  319  cp -dpR k8s ~
+  320  clear
+  321  cd
+  322  ls
+  323  cd exercise/
+  324  ls
+  325  cd basic/
+  326  ls
+  327  cd ..
+  328  ls
+  329  cd basic/
+  330  ls
+  331  cd
+  332  ls
+  333  vi deployment-nginx.yaml 
+  334  kubectl get pods
+  335  kubectl delete deploy nginx-deploy
+  336  clear
+  337  kubectl get svc
+  338  kubectl delete svc nginx-service
+  339  kubectl get svc
+  340  kubectl get deploy,rs,pods
+  341  kubectl apply -f deployment-nginx.yaml --record
+  342  kubectl get deploy
+  343  kubectl get rs
+  344  kubectl get pods
+  345  kubectl get pods -o wide
+  346  kubectl describe pod nginx-deploy-5dc8d78dcc-9hs9w
+  347  kubectl set image deployment my-nginx-deployment nginx=nginx:1.11 --record 
+  348  kubectl get deploy
+  349  kubectl set image deployment nginx-deploy nginx=nginx:1.11 --record 
+  350  kubectl get deploy
+  351  kubectl get rs
+  352  kubectl rollout history deployment nginx-deploy
+  353  kubectl rollout undo deployment nginx-deploy --to-revision=1
+  354  kubectl get deploy,rs,pods
+  355  clear
+  356  ls
+  357  kubectl get deploy
+  358  kubectl delete deploy nginx-deploy
+  359  kubectl get svc
+  360  clear
+  361  kubectl get pods -n default
+  362  kubectl get pods --all-namespaces
+  363  kubectl get ns
+  364  clear
+  365  ls
+  366  cd exercise/
+  367  ls
+  368  cd basic/
+  369  ls
+  370  vi question1.txt 
+  371  docker -v
+  372  docker ps
+  373  vi question1.txt 
+  374  vi jupyter-deployment.yaml 
+  375  kubectl apply -f jupyter-deployment.yaml 
+  376  kubectl get deploy,rs,pods
+  377  kubectl describe pod jupyter-5487f874b6-zxkqp
+  378  kubectl get deploy,rs,pods
+  379  vi jupyter-service.yaml 
+  380  kubectl apply -f jupyter-service.yaml 
+  381  clear
+  382  kubectl get svc
+  383  kubectl describe svc jupyter
+  384  kubectl get pods -o wide
+  385  kubectl get pods
+  386  kubectl logs jupyter-5487f874b6-zxkqp
+  387  clear
+  388  ls
+  389  vi question1.txt 
+  390  vi mysql-deployment.yaml 
+  391  kubectl apply -f mysql-deployment.yaml 
+  392  kubectl get deploy
+  393  kubectl get rs
+  394  kubectl get pods
+  395  kubectl logs mysql-95c9dd9f8-4fzpf
+  396  clear
+  397  ls
+  398  vi mysql-service.yaml 
+  399  kubectl apply -f mysql-service.yaml 
+  400  kubectl get svc
+  401  kubectl describe svc mysql
+  402  kubectl get pods -o wide
+  403  clear
+  404  ls\
+  405  clear
+  406  vi wordpress-deployment.yaml 
+  407  kubectl apply -f wordpress-deployment.yaml 
+  408  kubectl get deploy
+  409  kubectl get rs,pods
+  410  kubectl logs wordpress-8447894458-5c4zk
+  411  vi wordpress-service.yaml 
+  412  kubectl apply -f wordpress-service.yaml 
+  413  kubectl get svc
+  414  kubectl describe svc wordpress
+  415  kubectl get svc
+  416  clear
+  417  ls
+  418  vi question1.txt 
+  419  vi postgres-deployment.yaml 
+  420  kubectl apply -f postgres-deployment.yaml 
+  421  kubectl get pods
+  422  kubectl get pods -o wide\
+  423  kubectl get pods -o wide
+  424  kubectl logs postgres-6b959468c6-mb22j
+  425  clear
+  426  ls
+  427  vi postgres-service.yaml 
+  428  kubectl apply -f postgres-service.yaml 
+  429  kubectl get svc
+  430  kubectl describe svc postgres
+  431  clear
+  432  ls
+  433  vi drupal-deployment.yaml 
+  434  kubectl apply -f drupal-deployment.yaml 
+  435  kubectl get pods
+  436  clear
+  437  kubectl get pods
+  438  kubectl logs drupal-7fdb4f8c79-647bs
+  439  clear
+  440  ls
+  441  vi drupal-see
+  442  vi drupal-service.yaml 
+  443  kubectl apply -f drupal-service.yaml 
+  444  kubectl get svc
+  445  clear
+  446  kubectl get svc
+  447  vi postgres-deployment.yaml 
+  448  kubectl get svc
+  449  clear
+  450  ls
+  451  cd ..
+  452  ls
+  453  cd /w
+  454  history
+  455  clear
+  456  ls
+  457  cd
+  458  ls
+  459  cd work/
+  460  ls
+  461  git clone git@github.com:weable72/gsc-spring-cloud-msa-2023-1st.git
+  462  ssh-keygen
+  463  cat ~/.ssh/id_rsa.pub 
+  464  clear
+  465  git clone ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDR+6sPCQO2GfIC17tYs3f7CwOOgspukv8LwLRMqgEqPLaRDIpikSZMc8umNt3vZEKXol+9FSMjJwNyR9UkGrjLzin8RBaCm0gsYRLvA+wJbT25wRRgR6beFLt4jSSHgGsWJHe6C4hsuc0jEew2A7jt8O9RxjldkMSoGz1R3nn+H6hYjk5clPil50+LgVs5GCRYpuDIWNbxwx0bDVroecpHtH95TcTgboC2zNTxz6DgEWIqkjqbCtauPK3XHJP6zmM2yqITVEg8Exe2Dt/+aKjp3Mj/ROtOTvZtEXaWACohhDmMO/9Bxvqt2rXeV+RwNn0lEdWdpZdckzgMN7ph1lvWfJos1eVuGLqoUmqzQ0wnLaeNOvjwUnPwqMNVrcZxoEsXFYeTvBbmpTN+nnoVJ++HFwPgKOUsZyCSHGS1kVNlpnXlfMsKS1K/rlc7LGnKcdIWpzBjFOhOmypx6clt2xlXJ2sdVYQHtsIlKHDc64YNhUXJE4WQRwKc3gHrJEJYuKU= bard72@cs-1031213536594-default
+  466  clear
+  467  git clone git@github.com:weable72/gsc-spring-cloud-msa-2023-1st.git
+  468  ls
+  469  cd gsc-spring-cloud-msa-2023-1st/
+  470  ls
+  471  cd src
+  472  ls
+  473  cd bardroh/
+  474  ls
+  475  mkdir day04
+  476  history > h1.txt
+  477  vi h1.txt 
+  478  cp ~/exercise/basic/* .
+  479  clear
+  480  ls
+  481  mv *.yaml day04
+  482  ls
+  483  mv *.txt day04
+  484  cd day004
+  485  cd day04
+  486  ls
+  487  git add *
+  488  git commit
+  489  git push
+  490  vi email.txt
+  491  git add email.txt 
+  492  git commit
+  493  git push
+  494  cd work/
+  495  ls
+  496  rm -rf gsc-spring-cloud-msa-2023-1st/
+  497  rm -rf kosa-saas-2023-4nd/
+  498  git clone git@github.com:weable72/kosa-saas-2023-5th.git
+  499  clear
+  500  ls
+  501  cat /etc/*release*
+  502  df
+  503  df -m
+  504  clear
+  505  docker -v
+  506  docker ps
+  507  whoami
+  508  sudo su - root
+  509  clear
+  510  ls
+  511  whoami
+  512  rm -rf *
+  513  ls
+  514  mkdir work
+  515  cd work
+  516  git config --global user.name "Bard K. Roh"
+  517  git config --global user.email "bardroh@weable.ai"
+  518  git config --global --list
+  519  ssh-keygen
+  520  clear
+  521  cat ~/.ssh/id_rsa.pub
+  522  git clone git@github.com:weable72/kosa-saas-2023-5th.git
+  523  ls
+  524  cd kosa-saas-2023-5th/
+  525  ls
+  526  cd src
+  527  ls
+  528  cd ..
+  529  clear
+  530  ls
+  531  git clone git@github.com:weable72/kosa-saas-2023.git
+  532  gcloud container clusters get-credentials myk8s --zone asia-northeast3-a --project cryptic-pipe-398203
+  533  kubectl get nodes
+  534  kubectl get pods --all-namespaces
+  535  clear
+  536  kubectl run nginx-pod --image=nginx:1.11
+  537  kubectl get pods
+  538  kubectl get nodes
+  539  kubectl get pods
+  540  kubectl get pods -o wide
+  541  kubectl describe pod nginx-pod
+  542  clear
+  543  kubectl create deployment nginx-deploy --image=nginx:1.10
+  544  kubectl get deploy
+  545  kubectl get deploy -o wide
+  546  kubectl get rs
+  547  kubectl get rs -o wide
+  548  kubectl get pods
+  549  kubectl get pods -o wide
+  550  kubectl expose pod nginx-pod --name nginx-service --port=80 --type=LoadBalancer
+  551  kubectl get svc
+  552  clear
+  553  kubectl expose deploy nginx-deploy --name nginx-deploy-service --port=80 --type=LoadBalancer
+  554  kubectl get svc
+  555  kubectl delete svc nginx-service
+  556  kubectl get svc
+  557  kubectl delete svc nginx-deploy-service
+  558  kubectl get svc
+  559  clear
+  560  kubectl get pods
+  561  kubectl delete pod nginx-pod
+  562  kubectl delete deploy nginx-deploy
+  563  kubectl get pods
+  564  kubectl get svc
+  565  history
+  566  clear
+  567  kubectl create deployment nginx-deploy --dry-run=client –o yaml --image=nginx:1.10 
+  568  kubectl create deployment nginx-deploy --image=nginx:1.10 --dry-run=client –o yaml
+  569  kubectl create deployment nginx-deploy --image=nginx:1.10 --dry-run=client -o yaml
+  570  clear
+  571  kubectl create deployment nginx-deploy --image=nginx:1.10 --dry-run=client -o yaml > nginx-deploy.yml
+  572  vi nginx-deploy.yml 
+  573  kubecl get pods
+  574  kubectl get pods
+  575  kubectl get svc
+  576  ls
+  577  vi nginx-deploy.yml 
+  578  kubectl apply -f nginx-deploy.yml 
+  579  kubectl get deploy
+  580  kubectl get rs
+  581  kubectl get pods
+  582  kubectl delete pod nginx-deploy-5dc8d78dcc-tbdgg
+  583  kubetl get pods
+  584  kubectl get pods
+  585  clear
+  586  kubectl get pods
+  587  kubectl delete pod nginx-deploy-5dc8d78dcc-nlbxz
+  588  kubectl get pods
+  589  kubectl get pods -o wide
+  590  kubectl delete -f nginx-deploy.yml 
+  591  kubectl get deploy
+  592  kubectl get rs
+  593  kubectl get pods
+  594  ls
+  595  cd kosa-saas-2023-5th/
+  596  clear
+  597  cd src
+  598  ls
+  599  cd bardroh/
+  600  ls
+  601  cd day03/
+  602  ls
+  603  history > h3.txt
