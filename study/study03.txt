@@ -1,0 +1,31 @@
+# docker compose
+docker compose up -d (백그라운드로 구동)
+docker compose down
+
+docker compose -p wp up -d
+docker compose -p wp down
+
+docker compose -p wp -f ./docker-compose.yml up -d
+docker compose -p wp -f ./docker-compose.yml down
+
+# .yml 파일
+version: '3.0'
+services:
+  wordpressdb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=wordpress
+    volumes:
+      - /home/wordpress_db:/var/lib/mysql
+  wordpress:
+    depends_on:
+      - wordpressdb
+    image: wordpress:5.6
+    environment:
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=password
+    links:
+      - "wordpressdb:mysql"
+    ports:
+      - "80:80"
