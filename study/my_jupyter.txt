@@ -1,0 +1,25 @@
+# jupyter 컨테이너 설치
+docker run -it --name jupyter -p 8888:8888 ubuntu:20.04
+apt-get update
+apt-get install python3 python3-pip -y
+pip3 install jupyter
+jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root &
+ctrl+P, Q
+
+# hub.docker 커밋
+docker commit jupyter my_jupyter:1.0
+docker image ls
+docker rm -f jupyter
+docker tag my_jupyter:1.0 bardroh/my_jupyter:1.0
+docker image ls
+docker login
+docker push bardroh/my_jupyter:1.0
+
+# 기존 image 제거
+docker image rm my_jupyter:1.0
+docker image rm bardroh/my_jupyter:1.0
+
+# hub.docker에서 다운받아 설치
+docker run --name jupyter -p 8888:8888 -d bardroh/my_jupyter:1.0 jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root 
+
+방화벽 오픈하고 접속

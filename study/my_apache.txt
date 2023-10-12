@@ -1,0 +1,15 @@
+docker run -it -p 80:80 --name my_web ubuntu:18.04
+apt-get update
+apt-get install apache2 -y
+service apache2 start
+Ctrl P+Q
+docker commit my_web my_web:1.0
+docker image ls
+docker rm -f my_web
+docker tag my_web:1.0 bardroh/my_web:1.0
+docker image ls
+docker login
+docker push bardroh/my_web:1.0
+docker image rm my_web:1.0
+docker image rm bardroh/my_web:1.0
+docker run --name my_web -p 80:80 -d bardroh/my_web:1.0 apachectl -DFOREGROUND
