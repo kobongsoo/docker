@@ -29,3 +29,61 @@ services:
       - "wordpressdb:mysql"
     ports:
       - "80:80"
+------------------------------------------------------------------
+docker-compose로 joomla를 실행한다(실습).
+version: '3.1'
+
+services:
+  joomla:
+    image: joomla:4.3
+    restart: always
+    depends_on:
+      - joomladb
+    links:
+      - joomladb:mysql
+    ports:
+      - 80:80
+    environment:
+      JOOMLA_DB_HOST: mysql
+      JOOMLA_DB_PASSWORD: password
+    volumes:
+      - /home/joomla_web:/var/www/html
+
+  joomladb:
+    image: mysql:5.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - /home/joomla_db:/var/lib/mysql
+-------------------------------------------------------------------
+docker-compose로 drupal을 실행한다(실습).
+
+version: '3.0'
+services:
+  postgres-db:
+    image: postgres:11
+    environment:
+      - POSTGRES_DB=drupal
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+    volumes:
+      - /home/drupal_db:/var/lib/postgresql/data
+  web:
+    depends_on:
+      - postgres-db
+    links:
+      - postgres-db:postgres
+    image: drupal:9
+    volumes:
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles
+      - drupal-sites:/var/www/html/sites
+      - drupal-themes:/var/www/html/themes
+    ports:
+      - "80:80"
+volumes:
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
