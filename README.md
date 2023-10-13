@@ -142,6 +142,7 @@ e2cb797a2587   bong9431/jupyterlab:1.0   "/bin/sh -c 'jupyter…"   6 seconds ag
 ## 4. compose로 실행
 - 여러개의 컨테이너를 한꺼번에 순서대로 실행하는 방법임
 - compose.yml 파일을 만들고, docker compose로 실행
+- compose.yml reference는 [여기](https://docs.docker.com/compose/compose-file/) 참조
 ```
 # 디렉토리에 있는 compose.yml 실행함.
 docker compose up -d (백그라운드로 구동)
@@ -186,9 +187,37 @@ services:
 ```
 2. 실행<br>
 docker compose -p wp -f ./joomla-compose.yml up -d<br>
+```
+F:\docker\joomla>docker compose -p wp -f ./joomla-compose.yml up -d
+[+] Running 34/2
+ ✔ joomla 21 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                                                              38.0s
+ ✔ joomladb 11 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                                                                      39.1s
+[+] Building 0.0s (0/0)                                                                                                                docker:default
+[+] Running 3/3
+ ✔ Network wp_default       Created                                                                                                              0.1s
+ ✔ Container wp-joomladb-1  Started                                                                                                              0.3s
+ ✔ Container wp-joomla-1    Started                                                                                                              0.2s
 
+F:\docker\joomla>docker ps
+CONTAINER ID   IMAGE        COMMAND                   CREATED          STATUS          PORTS                NAMES
+9aab929d5607   joomla:4.3   "/entrypoint.sh apac…"   23 seconds ago   Up 20 seconds   0.0.0.0:80->80/tcp   wp-joomla-1
+87e2387dcb95   mysql:5.6    "docker-entrypoint.s…"   23 seconds ago   Up 21 seconds   3306/tcp             wp-joomladb-1
+```
 3. 종료<br>
 docker compose -p wp -f ./joomla-compose.yml down<br>
+```
+F:\docker\joomla>docker compose -p wp -f ./joomla-compose.yml down
+[+] Running 3/3
+ ✔ Container wp-joomla-1    Removed                                                                                                              4.6s
+ ✔ Container wp-joomladb-1  Removed                                                                                                              3.0s
+ ✔ Network wp_default       Removed                                                                                                              0.3s
+
+F:\docker\joomla>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+F:\docker\joomla>docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
 
 ### 예시 : drupal 실행 .yml 파일
 ```
