@@ -62,22 +62,83 @@ RUN apt-get install python3 python3-pip -y
 RUN pip3 install jupyterlab
 RUN mkdir /jupyterdir
 VOLUME /jupyterdir
-CMD jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/jupyterdir
+CMD jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/jupyterdir
 ```
 
 2. Dockerfile 빌드<br>
 **docker build -t jupyterlab:1.0 -f Dockerfile .**
-  
-3. hub.docker에 커밋<br>
+```
+F:\docker\dockerfile>docker build -t jupyterlab:1.0 -f Dockerfile .
+[+] Building 2.6s (9/9) FINISHED                                                                         docker:default
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 394B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                    0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04                                                                      0.0s
+ => CACHED [2/5] RUN apt-get update                                                                                0.0s
+ => CACHED [3/5] RUN apt-get install python3 python3-pip -y                                                        0.0s
+ => CACHED [4/5] RUN pip3 install jupyterlab                                                                       0.0s
+ => [5/5] RUN mkdir /jupyterdir                                                                                    0.4s
+ => exporting to image                                                                                             2.1s
+ => => exporting layers                                                                                            2.1s
+ => => writing image sha256:8bcd5b3b53b1dc7bb16db42e48df743736932a484bb9b9e8aa408d5e3eff9d27                       0.0s
+ => => naming to docker.io/library/jupyterlab:1.0                                                                  0.0s
+``` 
+4. hub.docker에 커밋<br>
 docker tag jupyterlab:1.0 bong9431/jupyterlab:1.0<br>
+docker image ls<br>
 docker login<br>
 docker push bong9431/jupyterlab:1.0<br>
+```
+F:\docker\dockerfile>docker image ls
+REPOSITORY            TAG       IMAGE ID       CREATED          SIZE
+bong9431/jupyterlab   1.0       8bcd5b3b53b1   53 seconds ago   659MB
+jupyterlab            1.0       8bcd5b3b53b1   53 seconds ago   659MB
+ubuntu                22.04     3565a89d9e81   2 weeks ago      77.8MB
+```
+```
+F:\docker\dockerfile>docker push bong9431/jupyterlab:1.0
+The push refers to repository [docker.io/bong9431/jupyterlab]
+b05ecf5f512d: Pushed
+6310d48066b7: Pushed
+1e464e5e5fc2: Pushed
+8de4c06f19af: Pushed
+01d4e4b4f381: Layer already exists
+1.0: digest: sha256:c87e6c9d9a7288dca5e14ee31880e690bc58da4e7b4d9b770222c6729a1925dc size: 1373
+```
 
 4. 기존이미지 삭제 후 설치 확인<br>
 docker rmi jupyterlab:1.0<br>
 docker rmi bong9431/jupyterlab:1.0<br>
 **docker run -d -p 8888:8888 --name myjupyter -v /work:/jupyterdir bong9431/jupyterlab:1.0**<br>
+```
+F:\docker\dockerfile>docker image rm jupyterlab:1.0
+Untagged: jupyterlab:1.0
 
+F:\docker\dockerfile>docker image rm bong9431/jupyterlab:1.0
+Untagged: bong9431/jupyterlab:1.0
+Untagged: bong9431/jupyterlab@sha256:c87e6c9d9a7288dca5e14ee31880e690bc58da4e7b4d9b770222c6729a1925dc
+Deleted: sha256:8bcd5b3b53b1dc7bb16db42e48df743736932a484bb9b9e8aa408d5e3eff9d27
+```
+```
+F:\docker\dockerfile>docker run -d -p 8888:8888 --name myjupyter -v /work:/jupyterdir bong9431/jupyterlab:1.0
+Unable to find image 'bong9431/jupyterlab:1.0' locally
+1.0: Pulling from bong9431/jupyterlab
+37aaf24cf781: Already exists
+0cfbe9cf08d5: Already exists
+26effc8586e1: Already exists
+bf8919e76766: Already exists
+56e635cd6dbb: Already exists
+Digest: sha256:c87e6c9d9a7288dca5e14ee31880e690bc58da4e7b4d9b770222c6729a1925dc
+Status: Downloaded newer image for bong9431/jupyterlab:1.0
+e2cb797a2587ab78eecab70372007a917abc88703cf12b944b0f9d76a2a00edf
+
+F:\docker\dockerfile>docker ps
+CONTAINER ID   IMAGE                     COMMAND                   CREATED         STATUS         PORTS
+   NAMES
+e2cb797a2587   bong9431/jupyterlab:1.0   "/bin/sh -c 'jupyter…"   6 seconds ago   Up 5 seconds   0.0.0.0:8888->8888/tcp   myjupyter
+```
 ## 4. compose로 실행
 - 여러개의 컨테이너를 한꺼번에 순서대로 실행하는 방법임
 - compose.yml 파일을 만들고, docker compose로 실행
@@ -160,5 +221,34 @@ volumes:
   drupal-sites:
   drupal-themes:
 ```
+
+## 기타
+- docker 버전 확인
+```
+docker ps -a
+```
+- docker 실행 확인
+```
+docker ps
+docker ps -a
+```
+- docker 종료
+```
+docker rm -f <name>
+docker rm -f $(docker ps -a -q)
+```
+- docker 이미지 확인
+```
+docker image ls
+```
+- docker 설치 로그 보기
+```
+docker logs name
+```
+- docker 볼륨 확인
+```
+docker volume ls
+```
+
 
 
