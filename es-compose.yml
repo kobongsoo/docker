@@ -1,0 +1,42 @@
+# elasticsearch 7.17.x
+
+version: '1.0'
+
+services:
+  elasticsearch:
+    image: elasticsearch:7.17.13
+    environment:
+      - discovery.type=single-node
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - elasticsearch_network
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+  kibana:
+    image: kibana:7.17.13
+    depends_on:
+      - elasticsearch
+    ports:
+      - 5601:5601
+    networks:
+      - elasticsearch_network
+
+  jupyter:
+    image: bong9431/jupyterlab:1.0
+    ports:
+      - 8888:8888
+    volumes:
+      - /work:/jupyterdir
+    networks:
+      - elasticsearch_network
+
+volumes:
+  esdata:
+  jupyterdir:
+
+networks:
+  elasticsearch_network:
+   
