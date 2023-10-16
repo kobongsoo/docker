@@ -251,6 +251,10 @@ volumes:
   drupal-themes:
 ```
 
+### 예시 : elasticsearch + kibana + jupyter 
+- [es-compose.yml](https://github.com/kobongsoo/docker/blob/master/es-compose.yml)
+- elsticsearch compose 내용은 [여기](https://www.elastic.co/guide/en/elasticsearch/reference/7.5/docker.html) 참조
+
 ## 기타
 - docker 버전 확인
 ```
@@ -266,17 +270,21 @@ docker ps -a
 docker rm -f <name>
 docker rm -f $(docker ps -a -q)
 ```
-- docker 이미지 확인
+- docker 이미지 확인 / 이미지 내용 상세 보기 / 이미지 삭제
 ```
-docker image ls
+docker image ls / docker image inspect <name> / docker image rm <name>
 ```
 - docker 설치 로그 보기
 ```
 docker logs name
 ```
-- docker 볼륨 확인
+- docker 볼륨 확인 / 볼륨 삭제 
 ```
-docker volume ls
+docker volume ls / docker image rm <name>
+```
+- docker 네트워크 확인 / 네트워크 삭제
+```
+docker network ls / docker network rm <name>
 ```
 
 
