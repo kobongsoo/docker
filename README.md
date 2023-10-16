@@ -148,12 +148,12 @@ e2cb797a2587   bong9431/jupyterlab:1.0   "/bin/sh -c 'jupyter…"   6 seconds ag
 docker compose up -d (백그라운드로 구동)
 docker compose down
 
-docker compose -p wp up -d
-docker compose -p wp down
+docker compose -p <prefix-name> up -d
+docker compose -p <prefix-name>  down
 
 # 파일명이 compose.yml 아닐때
-docker compose -p wp -f ./docker-compose.yml up -d
-docker compose -p wp -f ./docker-compose.yml down
+docker compose -p <prefix-name>  -f ./docker-compose.yml up -d
+docker compose -p <prefix-name>  -f ./docker-compose.yml down
 ```
 
 ### 예시 : joomla 실행
