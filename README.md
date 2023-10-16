@@ -255,7 +255,11 @@ volumes:
 - [es-compose.yml](https://github.com/kobongsoo/docker/blob/master/es-compose.yml)
 - elsticsearch compose 내용은 [여기](https://www.elastic.co/guide/en/elasticsearch/reference/7.5/docker.html) 참조
 
-## 기타
+## 에러 
+- 소켓 bind 에러 => **netcfg -d** 실행
+<br> Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:9200 -> 0.0.0.0:0: listen tcp 0.0.0.0:92
+
+## 명령어
 - docker 버전 확인
 ```
 docker ps -a
