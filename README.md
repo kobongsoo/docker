@@ -22,7 +22,7 @@ apt-get install python3 python3-pip -y <br>
 
 3. jupyter lab 구동 & 동작확인 <br>
  mkdir /notebooks <br>
-**jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/notebooks &** <br>
+**jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/notebooks &** <br>
 ctrl+P, Q<br>
 웹브라우저에서 접속 확인<br>
 
