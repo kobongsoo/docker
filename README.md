@@ -23,7 +23,7 @@ apt-get install python3 python3-pip -y <br>
 3. jupyter lab 구동 & 동작확인 <br>
  mkdir /notebooks <br>
 **jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/notebooks &** <br>
-ctrl+P, Q<br>
+**ctrl+P, Q** # app 실행상태로 쉘 빠저나옴<br> 
 웹브라우저에서 접속 확인<br>
 
 4. repo 만들고 hub.docker 로그인<br>
@@ -261,9 +261,13 @@ volumes:
 <br> Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:9200 -> 0.0.0.0:0: listen tcp 0.0.0.0:92
 
 ## 명령어
+- docker 컨테이너에서 빠져 나오기(컨테이너 실행상태 유지)
+```
+ctrl+P, Q 
+```
 - docker 버전 확인
 ```
-docker ps -a
+docker -v
 ```
 - docker 실행 확인
 ```
