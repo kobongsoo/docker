@@ -65,8 +65,9 @@ VOLUME /jupyterdir
 CMD jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/jupyterdir
 ```
 
-2. Dockerfile 빌드<br>
+2. Dockerfile 빌드 / 실행<br>
 **docker build -t jupyterlab:1.0 -f Dockerfile .**
+<br>**docker run -it --name jupyter jupyterlab:1.0**
 ```
 F:\docker\dockerfile>docker build -t jupyterlab:1.0 -f Dockerfile .
 [+] Building 2.6s (9/9) FINISHED                                                                         docker:default
