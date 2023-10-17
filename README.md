@@ -291,6 +291,17 @@ docker volume ls / docker image rm <name>
 ```
 docker network ls / docker network rm <name>
 ```
+- docker cp 컨테이너<->로컬 파일 복사 
+```
+# docker 컨테이너 안에 있을 파일을 로컬로 복사
+docker cp <컨테이너명>:<컨테이너파일> <로컬경로>
+docker cp tmp_container:/root/data/test.md ~/data/ 
+```
+```
+# docker 로컬파일을 컨테이너 안에 폴더로 복사
+docker cp <로컬파일> <컨테이너명>:<컨테이너경로>
+docker cp ~/data/test.md tmp_container:/root/data/
+```
 
 
 
