@@ -7,6 +7,35 @@
 3. install-docker.sh 테스트로 실행과정 진행해봄(설치는 안됨)(pass해도 됨): sh install-docker.sh --dry-run 
 4. install-docker.sh 실제 설치: sh install-docker.sh
 
+### docker desktop 설정
+- vm 이미지 경로 : settings-Resources-Disk image location 경로 변경
+  
+  ![image](https://github.com/kobongsoo/docker/assets/93692701/0b6a2851-f96d-494a-9dc0-7f8eb9ec346b)
+  
+- docker 용량 : settings-Docker engine 에서 defaultKeepSoorage 용량 변경후 [Apply&restart] 클릭
+  
+  ![image](https://github.com/kobongsoo/docker/assets/93692701/5f1b6a8f-7b0c-4bde-bc31-086ce20102ae)
+
+- docker desktop에서 볼륨설정 경로 찾기
+  <br> 출처 : https://velog.io/@ette9844/Windows10-%EC%97%90%EC%84%9C-varlibdocker-%EC%B0%BE%EA%B8%B0
+  <br>예시)
+  <br> docker run -it --name embed -p 9000:9000 -p 8888:8888 --net k_es_network **-v /embed_data:/var/embed_data** bong9431/embed:1.0
+  <br> 이때 embed_data 로컬 폴더는 docker desktop cmd 에서 볼수 없음.
+  <br> 아래처럼 ubuntu 가상 vm 마운트후 /data 폴더에서 확인해야 함.(**docker run -v/:/data -it ubuntu /bin/bash**)
+  
+  ```
+  F:\docker\embed>docker run -v/:/data -it ubuntu /bin/bash
+  root@1bf0a2f2e670:/# chroot /data
+  sh-5.1# ls
+  A             D  H  L        O  S       Users    X  b     cores  embed_data  h     k      m      o        proc  run   sys  usr  x
+  Applications  E  I  Library  P  System  V        Y  bin   d      etc         home  l      media  opt      q     s     t    v    y
+  B             F  J  M        Q  T       Volumes  Z  boot  dev    f           i     lib    mnt    p        r     sbin  tmp  var  z
+  C             G  K  N        R  U       W        a  c     e      g           j     lib64  n      private  root  srv   u    w
+  sh-5.1# cd embed_data
+  sh-5.1# ls
+  test.ipynb  test.txt
+  sh-5.1#
+  ```
 ## 2. docker 이미지 만들기
 - [hub.docker](https://hub.docker.com/)에 회원 가입 후 [Create repository] 로 rep 만듬.
   ![image](https://github.com/kobongsoo/docker/assets/93692701/420890ee-a8b2-486e-b896-d84dcacf1a60)
