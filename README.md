@@ -22,7 +22,7 @@
   <br> docker run -it --name embed -p 9000:9000 -p 8888:8888 --net k_es_network **-v /embed_data:/var/embed_data** bong9431/embed:1.0
   <br> 이때 embed_data 로컬 폴더는 docker desktop cmd 에서 볼수 없음.
   <br> 아래처럼 ubuntu 가상 vm 마운트후 /data 폴더에서 확인해야 함.(**docker run -v/:/data -it ubuntu /bin/bash**)
-  
+  <br> 참고로 **docker 폴더 경로는 /data/var/lib/docker**
   ```
   F:\docker\embed>docker run -v/:/data -it ubuntu /bin/bash
   root@1bf0a2f2e670:/# chroot /data
