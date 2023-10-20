@@ -290,6 +290,10 @@ volumes:
 <br> Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:9200 -> 0.0.0.0:0: listen tcp 0.0.0.0:92
 
 ## 명령어
+- **마운트된 볼륨 데이터를 호스트로 백업 하기**
+```
+docker run --rm -v <volume명>:/source -v .\study\backup:/target busybox tar cvzf /target/backup.tar.gz -C /source .
+```
 - docker 컨테이너에서 빠져 나오기(컨테이너 실행상태 유지)
 ```
 ctrl+P, Q 
