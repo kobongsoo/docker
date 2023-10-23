@@ -339,6 +339,12 @@ docker cp tmp_container:/root/data/test.md ~/data/
 docker cp <로컬파일> <컨테이너명>:<컨테이너경로>
 docker cp ~/data/test.md tmp_container:/root/data/
 ```
+- docker 이미지 옮기기
+```
+# tar 로 이미지를 압축해서 옮김.
+docker save -o <파일명.tar> <이미지 명>
+docker save -o apache.tar httpd:latest
+```
 
 
 
