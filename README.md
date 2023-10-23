@@ -294,21 +294,30 @@ volumes:
 ```
 docker run --rm -v <volume명>:/source -v .\study\backup:/target busybox tar cvzf /target/backup.tar.gz -C /source .
 ```
-- docker 컨테이너에서 빠져 나오기(컨테이너 실행상태 유지)
+- **docker 컨테이너에서 빠져 나오기(컨테이너 실행상태 유지)**
 ```
 ctrl+P, Q 
 ```
 - docker 버전 확인
 ```
 docker -v
+docker version
 ```
 - docker 실행 확인
 ```
 docker ps
 docker ps -a
 ```
+- docker 실행
+```
+docker run <옵션(-d/-it)> --name <컨테이너명> -p <호스트포트>:<컨테이너포트> <이미지명>
+```
 - docker 종료
 ```
+docker stop  # docker 실행 중지
+docker rm    # docker 삭제
+
+# stop/rm 을 한꺼번에 
 docker rm -f <name>
 docker rm -f $(docker ps -a -q)
 ```
@@ -339,11 +348,23 @@ docker cp tmp_container:/root/data/test.md ~/data/
 docker cp <로컬파일> <컨테이너명>:<컨테이너경로>
 docker cp ~/data/test.md tmp_container:/root/data/
 ```
-- docker 이미지 옮기기
+- **docker 이미지 옮기기**
 ```
 # tar 로 이미지를 압축해서 옮김.
 docker save -o <파일명.tar> <이미지 명>
 docker save -o apache.tar httpd:latest
+```
+- **컨테이너 내부 shell 실행.**
+```
+docker exec -it <실행중인 컨테이너명> /bin/bash
+```
+- 컨테이너 이미지 만들기
+```
+docker commit <실행중인 컨테이너명> <이미지파일명>
+```
+- 리눅스 버전 확인
+```
+$ cat /etc/*release*
 ```
 
 
