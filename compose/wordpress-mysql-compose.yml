@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+
+  mysql01:
+    image: mysql:5.7
+    networks:
+      - network01
+    volumes:
+      - mysqlvol01:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wordpressdb01
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+
+  wordpress01:
+    depends_on:
+      - mysql01
+    image: wordpress
+    networks:
+      - network01
+    volumes:
+      - wordpressvol01:/var/www/html
+    ports:
+      - 8085:80
+    restart: on-failure
+    environment:
+      WORDPRESS_DB_HOST: mysql01
+      WORDPRESS_DB_NAME: wordpressdb01
+      WORDPRESS_DB_USER: user
+      WORDPRESS_DB_PASSWORD: password
+
+networks:
+  network01:
+
+volumes:
+  mysqlvol01:
+  wordpressvol01:
