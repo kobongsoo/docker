@@ -1,17 +1,19 @@
 #==========================================================================================
 # FastAPI + Elasticsearch + BERT for embedding Document
 # FastAPI 와 BERT 모델을 이용한 문서 임베딩
-# - elasticsearch 7.17.13 사용
+# - elasticsearch 7.17.13 에 nori_tokenizer 설치한 bong9431/elasticsearch:7.17.13.1 사용 함.
 # - https://huggingface.co/bongsoo/kpf-sbert-128d-v1 모델 사용
 # 
-# * 설치전 data/settings.yaml 파일을 만들고, embed 켄터이너 구동에 필요한 설정값 변경이 필요함.(해당 파일은 구동시 자동 복사됨)
+# * embed 컨테이너 구동전 data 폴더를 compose.yml 파일 실행 경로에 넣고, 
+#   구동에 필요한 settings.yaml 에 es ip등을 수정해야함.
 #===========================================================================================
 
 version: '1.0'
 
 services:
-  es:
-    image: elasticsearch:7.17.13
+  elasticsearch:
+    image: bong9431/elasticsearch:7.17.13.1
+    restart: always
     environment:
       - discovery.type=single-node
     ports: 
@@ -20,27 +22,34 @@ services:
     networks:
       - es_network
     volumes:
-      - es_data:/usr/share/elasticsearch/data
-
+      - esdata:/usr/share/elasticsearch/data
+    
   kibana:
     image: kibana:7.17.13
+    restart: always
+    depends_on:
+        - elasticsearch
     ports:
       - 5601:5601
     networks:
       - es_network
 
   embed:
-    image: bong9431/embed:2.0
-    ports:
-       - 9000:9000
-       - 8888:8888
-    networks:
-       - es_network
-    volumes:
-       - /embed_log:/embed/FastAPI/log
+      image: bong9431/embed:2.0
+      restart: always
+      depends_on:
+        - elasticsearch
+      ports:
+        - 9000:9000
+        - 8888:8888
+      networks:
+        - es_network
+      volumes:
+        - ./embed_log:/embed/FastAPI/log
+        - ./data:/embed/FastAPI/data
 
 volumes:
-  es_data:
+  esdata:
 
 networks:
   es_network:
