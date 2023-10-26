@@ -297,6 +297,21 @@ volumes:
 ## 에러 
 - 소켓 bind 에러 => **netcfg -d** 실행
 <br> Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:9200 -> 0.0.0.0:0: listen tcp 0.0.0.0:92
+- docker daemon running? 에러 => root 권한으로 Docker 데몬 실행해줌.
+<br>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+```
+# Docker 데몬 확인:먼저 Docker 데몬이 실행 중인지 확인하십시오. 다음 명령어를 사용하여 Docker 데몬 상태를 확인합니다:
+sudo systemctl status docker
+
+# 결과에서 "Active" 항목이 "active (running)"으로 나와야 합니다. Docker 데몬이 실행 중이 아니면 다음 명령어로 Docker를 시작하십시오:
+sudo systemctl start docker
+
+# 사용자를 Docker 그룹에 추가:
+# Docker 데몬에 액세스하기 위해서는 사용자가 Docker 그룹에 속해야 합니다. 사용자를 Docker 그룹에 추가하려면 다음 명령어를 사용합니다:
+sudo usermod -aG docker $USER
+
+#사용자를 Docker 그룹에 추가한 후 로그아웃하고 다시 로그인하여 변경 사항을 적용하십시오.
+```
 
 ## 명령어
 - **마운트된 볼륨 데이터를 호스트로 백업 하기**
