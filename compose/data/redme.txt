@@ -1,0 +1,2 @@
+compose.yml 실행할때 해당 data 폴더에 이 파일들을 실행경로에 위치시며서 실행해야 한다.
+settings.yml 에 es ip(외부ip) 등을 변경해야 한다.
