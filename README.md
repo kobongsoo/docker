@@ -282,8 +282,17 @@ volumes:
 ```
 
 ### 예시 : elasticsearch + kibana + jupyter 
-- [es-compose.yml](https://github.com/kobongsoo/docker/blob/master/es-compose.yml)
+- [es-compose.yml](https://github.com/kobongsoo/docker/blob/master/compose/es-compose.yml)
 - elsticsearch compose 내용은 [여기](https://www.elastic.co/guide/en/elasticsearch/reference/7.5/docker.html) 참조
+
+### 예시 : elsticsearch + kibana + embed
+- [es-embed-compose.yml](https://github.com/kobongsoo/docker/blob/master/compose/es-embed-compose.yml)
+- 문장임베딩 후 chat 창을 통해 검색하고, LLM(gpt, bard) 연동하여 응답 받는 예제.
+- es-embed-compose.yml 실행전, 실행 위치에 ./data/[settings.yml](https://github.com/kobongsoo/docker/blob/master/compose/data/settings.yaml) 파일 필요함. 해당 settings.yml 파일은 ES IP 등 환경에 따라 변경 필요.
+- 구동 후에는 {ip}/doc 입력해서 elasticsearch에 임베딩 할수 있음.
+- {ip}/chat 입력해서 채팅할 수 있음.
+![image](https://github.com/kobongsoo/docker/assets/93692701/4af7109a-32ea-47ff-845a-7949bc1d1649)
+
 
 ## 에러 
 - 소켓 bind 에러 => **netcfg -d** 실행
