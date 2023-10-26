@@ -1,12 +1,4 @@
-#==========================================================================================
-# FastAPI + Elasticsearch + BERT for embedding Document
-# FastAPI 와 BERT 모델을 이용한 문서 임베딩
-# - elasticsearch 7.17.13 에 nori_tokenizer 설치한 bong9431/elasticsearch:7.17.13.1 사용 함.
-# - https://huggingface.co/bongsoo/kpf-sbert-128d-v1 모델 사용
-# 
-# * embed 컨테이너 구동전 data 폴더를 compose.yml 파일 실행 경로에 넣고, 
-#   구동에 필요한 settings.yaml 에 es ip등을 수정해야함.
-#===========================================================================================
+# elasticsearch 7.17.x
 
 version: '1.0'
 
@@ -35,7 +27,7 @@ services:
       - es_network
 
   embed:
-      image: bong9431/embed:2.0
+      image: bong9431/embed:3.0
       restart: always
       depends_on:
         - elasticsearch
