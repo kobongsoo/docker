@@ -95,7 +95,7 @@ CMD jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/jupyterdir
 ```
 
 2. Dockerfile 빌드 / 실행<br>
-**docker build -t jupyterlab:1.0 -f Dockerfile .**
+**docker build -t jupyterlab:1.0 -f Dockerfile . (반드시 뒤에 한깐 띄고 . 붙여야함)**
 <br>docker run -d --name myjupyter -p 8888:8888 jupyterlab:1.0
 ```
 F:\docker\dockerfile>docker build -t jupyterlab:1.0 -f Dockerfile .
