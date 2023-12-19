@@ -16,6 +16,15 @@
   
   ![image](https://github.com/kobongsoo/docker/assets/93692701/5f1b6a8f-7b0c-4bde-bc31-086ce20102ae)
 
+- docker 메모리 설정 : C:\Users\{사용자} 경로에 ".wslconfig" 파일을 만들고, 아래처럼 입력
+  ![image](https://github.com/kobongsoo/docker/assets/93692701/3cd2bda3-cbd9-43aa-ae46-f8618c876cff)
+
+```
+  [wsl2]
+  memory=6GB
+  processors=6
+```
+  
 - docker desktop에서 볼륨설정 경로 찾기
   <br> 출처 : https://velog.io/@ette9844/Windows10-%EC%97%90%EC%84%9C-varlibdocker-%EC%B0%BE%EA%B8%B0
   <br>예시)
