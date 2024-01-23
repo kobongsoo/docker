@@ -399,6 +399,16 @@ docker commit <실행중인 컨테이너명> <이미지파일명>
 ```
 $ cat /etc/*release*
 ```
+- hub.docker.com 로그아웃 하기
+```
+# docker push 에러 (denied: requested access to the resource is denied)나면 hub.docker 로그아웃하고 나서 다시 로그인 하면됨.
+docker logout
+
+docker login
+Username : bong9431
+Password :
+
+```
 
 
 
