@@ -1,4 +1,94 @@
 # docker
+
+## 명령어
+- **마운트된 볼륨 데이터를 호스트로 백업 하기**
+```
+docker run --rm -v <volume명>:/source -v .\study\backup:/target busybox tar cvzf /target/backup.tar.gz -C /source .
+```
+- **docker 컨테이너에서 빠져 나오기(컨테이너 실행상태 유지)**
+```
+ctrl+P, Q 
+```
+- docker 버전 확인
+```
+docker -v
+docker version
+```
+- docker 실행 확인
+```
+docker ps
+docker ps -a
+```
+- docker 실행
+```
+docker run <옵션(-d/-it)> --name <컨테이너명> -p <호스트포트>:<컨테이너포트> <이미지명>
+```
+- docker 종료
+```
+docker stop  # docker 실행 중지
+docker rm    # docker 삭제
+
+# stop/rm 을 한꺼번에 
+docker rm -f <name>
+
+# 모든 docker 종료/rm
+docker container prune
+```
+- docker 이미지 확인 / 이미지 내용 상세 보기 / 이미지 삭제
+```
+docker image ls / docker image inspect <name> / docker image rm <name>
+```
+- docker 설치 로그 보기
+```
+docker logs name
+```
+- docker 볼륨 확인 / 볼륨 삭제 
+```
+docker volume ls / docker image rm <name>
+```
+- docker 네트워크 확인 / 네트워크 삭제
+```
+docker network ls / docker network rm <name>
+```
+- docker cp 컨테이너<->로컬 파일 복사 
+```
+# docker 컨테이너 안에 있을 파일을 로컬로 복사
+docker cp <컨테이너명>:<컨테이너파일> <로컬경로>
+docker cp tmp_container:/root/data/test.md ~/data/ 
+```
+```
+# docker 로컬파일을 컨테이너 안에 폴더로 복사
+docker cp <로컬파일> <컨테이너명>:<컨테이너경로>
+docker cp ~/data/test.md tmp_container:/root/data/
+```
+- **docker 이미지 옮기기**
+```
+# tar 로 이미지를 압축해서 옮김.
+docker save -o <파일명.tar> <이미지 명>
+docker save -o apache.tar httpd:latest
+```
+- **컨테이너 내부 shell 실행.**
+```
+docker exec -it <실행중인 컨테이너명> /bin/bash
+```
+- 컨테이너 이미지 만들기
+```
+docker commit <실행중인 컨테이너명> <이미지파일명>
+```
+- 리눅스 버전 확인
+```
+$ cat /etc/*release*
+```
+- hub.docker.com 로그아웃 하기
+```
+# docker push 에러 (denied: requested access to the resource is denied)나면 hub.docker 로그아웃하고 나서 다시 로그인 하면됨.
+docker logout
+
+docker login
+Username : bong9431
+Password :
+```
+
 ## 1. docker 설치
 - 윈도우 os : WSL2 기반으로 [Docker desktop](https://docs.docker.com/desktop/install/windows-install/) 다운로드 해서 설치
 - 리눅스 :  get.docker.com 스크립트 이용, root 권한으로 전환( sudo su - root) 후 아래 순서대로 실행.
@@ -321,95 +411,6 @@ sudo usermod -aG docker $USER
 
 #사용자를 Docker 그룹에 추가한 후 로그아웃하고 다시 로그인하여 변경 사항을 적용하십시오.
 ```
-
-## 명령어
-- **마운트된 볼륨 데이터를 호스트로 백업 하기**
-```
-docker run --rm -v <volume명>:/source -v .\study\backup:/target busybox tar cvzf /target/backup.tar.gz -C /source .
-```
-- **docker 컨테이너에서 빠져 나오기(컨테이너 실행상태 유지)**
-```
-ctrl+P, Q 
-```
-- docker 버전 확인
-```
-docker -v
-docker version
-```
-- docker 실행 확인
-```
-docker ps
-docker ps -a
-```
-- docker 실행
-```
-docker run <옵션(-d/-it)> --name <컨테이너명> -p <호스트포트>:<컨테이너포트> <이미지명>
-```
-- docker 종료
-```
-docker stop  # docker 실행 중지
-docker rm    # docker 삭제
-
-# stop/rm 을 한꺼번에 
-docker rm -f <name>
-
-# 모든 docker 종료/rm
-docker container prune
-```
-- docker 이미지 확인 / 이미지 내용 상세 보기 / 이미지 삭제
-```
-docker image ls / docker image inspect <name> / docker image rm <name>
-```
-- docker 설치 로그 보기
-```
-docker logs name
-```
-- docker 볼륨 확인 / 볼륨 삭제 
-```
-docker volume ls / docker image rm <name>
-```
-- docker 네트워크 확인 / 네트워크 삭제
-```
-docker network ls / docker network rm <name>
-```
-- docker cp 컨테이너<->로컬 파일 복사 
-```
-# docker 컨테이너 안에 있을 파일을 로컬로 복사
-docker cp <컨테이너명>:<컨테이너파일> <로컬경로>
-docker cp tmp_container:/root/data/test.md ~/data/ 
-```
-```
-# docker 로컬파일을 컨테이너 안에 폴더로 복사
-docker cp <로컬파일> <컨테이너명>:<컨테이너경로>
-docker cp ~/data/test.md tmp_container:/root/data/
-```
-- **docker 이미지 옮기기**
-```
-# tar 로 이미지를 압축해서 옮김.
-docker save -o <파일명.tar> <이미지 명>
-docker save -o apache.tar httpd:latest
-```
-- **컨테이너 내부 shell 실행.**
-```
-docker exec -it <실행중인 컨테이너명> /bin/bash
-```
-- 컨테이너 이미지 만들기
-```
-docker commit <실행중인 컨테이너명> <이미지파일명>
-```
-- 리눅스 버전 확인
-```
-$ cat /etc/*release*
-```
-- hub.docker.com 로그아웃 하기
-```
-# docker push 에러 (denied: requested access to the resource is denied)나면 hub.docker 로그아웃하고 나서 다시 로그인 하면됨.
-docker logout
-
-docker login
-Username : bong9431
-Password :
-
 ```
 
 
