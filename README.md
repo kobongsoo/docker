@@ -352,7 +352,9 @@ docker rm    # docker 삭제
 
 # stop/rm 을 한꺼번에 
 docker rm -f <name>
-docker rm -f $(docker ps -a -q)
+
+# 모든 docker 종료/rm
+docker container prune
 ```
 - docker 이미지 확인 / 이미지 내용 상세 보기 / 이미지 삭제
 ```
