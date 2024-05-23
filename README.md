@@ -187,7 +187,7 @@ LABEL "compay"="mocomsys"
 # run command inside container
 RUN apt-get update
 RUN apt-get install python3 python3-pip -y
-RUN pip3 install jupyterlab
+RUN pip3 install jupyter lab
 RUN mkdir /jupyterdir
 VOLUME /jupyterdir
 CMD jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir=/jupyterdir
